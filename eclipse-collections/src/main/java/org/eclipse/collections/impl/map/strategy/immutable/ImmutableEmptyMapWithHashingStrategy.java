@@ -228,6 +228,12 @@ final class ImmutableEmptyMapWithHashingStrategy<K, V>
         return this;
     }
 
+    @Override
+    public V getOnly()
+    {
+        throw new IllegalStateException("Iterable is empty.");
+    }
+
     private Object writeReplace()
     {
         return new ImmutableMapWithHashingStrategySerializationProxy<>(this, this.hashingStrategy);

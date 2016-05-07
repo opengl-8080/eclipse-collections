@@ -178,6 +178,12 @@ final class ImmutableEmptySetWithHashingStrategy<T>
         return null;
     }
 
+    @Override
+    public T getOnly()
+    {
+        throw new IllegalStateException("Iterable is empty.");
+    }
+
     private Object writeReplace()
     {
         return new ImmutableSetWithHashingStrategySerializationProxy<>(this, this.hashingStrategy);

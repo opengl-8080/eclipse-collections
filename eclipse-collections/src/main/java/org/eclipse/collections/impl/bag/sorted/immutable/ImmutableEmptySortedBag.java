@@ -313,6 +313,12 @@ class ImmutableEmptySortedBag<T>
     }
 
     @Override
+    public T getOnly()
+    {
+        throw new IllegalStateException("Iterable is empty.");
+    }
+
+    @Override
     public ImmutableSortedBag<T> takeWhile(Predicate<? super T> predicate)
     {
         return this;

@@ -77,6 +77,12 @@ final class EmptySet<T>
     }
 
     @Override
+    public T getOnly()
+    {
+        throw new IllegalStateException("Iterable is empty.");
+    }
+
+    @Override
     public void each(Procedure<? super T> procedure)
     {
     }

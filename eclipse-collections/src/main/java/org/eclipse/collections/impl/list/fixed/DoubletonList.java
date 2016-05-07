@@ -73,6 +73,12 @@ final class DoubletonList<T>
     }
 
     @Override
+    public T getOnly()
+    {
+        throw new IllegalStateException("Iterable has multiple values.");
+    }
+
+    @Override
     public int size()
     {
         return 2;

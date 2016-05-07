@@ -679,6 +679,25 @@ public class TreeSortedSet<T> extends AbstractMutableCollection<T>
     }
 
     @Override
+    public T getOnly()
+    {
+        Iterator<T> iterator = this.iterator();
+
+        if (!iterator.hasNext())
+        {
+            throw new IllegalStateException("Iterable is empty.");
+        }
+
+        T result = iterator.next();
+        if (iterator.hasNext())
+        {
+            throw new IllegalStateException("Iterable has multiple values.");
+        }
+
+        return result;
+    }
+
+    @Override
     public MutableSortedSet<SortedSetIterable<T>> powerSet()
     {
         return (MutableSortedSet<SortedSetIterable<T>>) (MutableSortedSet<?>) SortedSetIterables.powerSet(this);

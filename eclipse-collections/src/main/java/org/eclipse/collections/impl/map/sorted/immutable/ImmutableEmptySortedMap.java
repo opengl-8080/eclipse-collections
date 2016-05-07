@@ -298,4 +298,10 @@ final class ImmutableEmptySortedMap<K, V>
 
         return this;
     }
+
+    @Override
+    public V getOnly()
+    {
+        throw new IllegalStateException("Iterable is empty.");
+    }
 }

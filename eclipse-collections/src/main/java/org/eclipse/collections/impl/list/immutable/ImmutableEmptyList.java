@@ -335,6 +335,12 @@ final class ImmutableEmptyList<T>
     }
 
     @Override
+    public T getOnly()
+    {
+        throw new IllegalStateException("Iterable is empty");
+    }
+
+    @Override
     public int indexOf(Object object)
     {
         return -1;

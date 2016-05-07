@@ -246,6 +246,25 @@ public class ImmutableArrayBag<T>
     }
 
     @Override
+    public T getOnly()
+    {
+        Iterator<T> iterator = this.iterator();
+
+        if (!iterator.hasNext())
+        {
+            throw new IllegalStateException("Iterable is empty.");
+        }
+
+        T result = iterator.next();
+        if (iterator.hasNext())
+        {
+            throw new IllegalStateException("Iterable has multiple values.");
+        }
+
+        return result;
+    }
+
+    @Override
     public ImmutableBag<T> select(Predicate<? super T> predicate)
     {
         return this.select(predicate, HashBag.newBag()).toImmutable();

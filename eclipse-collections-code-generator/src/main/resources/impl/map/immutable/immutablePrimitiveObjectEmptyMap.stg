@@ -228,6 +228,11 @@ final class Immutable<name>ObjectEmptyMap\<V> implements Immutable<name>ObjectMa
         return null;
     }
 
+    public V getOnly()
+    {
+        throw new IllegalStateException("Iterable is empty.");
+    }
+
     public boolean contains(Object object)
     {
         return false;

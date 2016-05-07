@@ -209,6 +209,12 @@ final class ImmutableEmptyBag<T>
     }
 
     @Override
+    public T getOnly()
+    {
+        throw new IllegalStateException("Iterable is empty.");
+    }
+
+    @Override
     public Iterator<T> iterator()
     {
         return EmptyIterator.getInstance();

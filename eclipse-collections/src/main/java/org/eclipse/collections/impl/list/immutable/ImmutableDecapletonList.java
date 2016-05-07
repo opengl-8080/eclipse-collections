@@ -106,6 +106,12 @@ final class ImmutableDecapletonList<T>
     }
 
     @Override
+    public T getOnly()
+    {
+        throw new IllegalStateException("Iterable has multiple values.");
+    }
+
+    @Override
     public ImmutableList<T> newWith(T newItem)
     {
         return Lists.immutable.with(

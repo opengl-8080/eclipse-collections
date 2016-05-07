@@ -290,4 +290,10 @@ final class ImmutableEmptySortedSet<T>
         }
         return this;
     }
+
+    @Override
+    public T getOnly()
+    {
+        throw new IllegalStateException("Iterable is empty.");
+    }
 }

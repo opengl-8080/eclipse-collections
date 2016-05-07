@@ -148,6 +148,12 @@ final class QuintupletonList<T>
     }
 
     @Override
+    public T getOnly()
+    {
+        throw new IllegalStateException("Iterable has multiple values.");
+    }
+
+    @Override
     public void each(Procedure<? super T> procedure)
     {
         procedure.value(this.element1);

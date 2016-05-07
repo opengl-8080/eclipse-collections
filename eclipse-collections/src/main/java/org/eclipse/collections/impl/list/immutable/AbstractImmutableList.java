@@ -970,6 +970,21 @@ abstract class AbstractImmutableList<T>
         }
 
         @Override
+        public T getOnly()
+        {
+            if (this.isEmpty())
+            {
+                throw new IllegalStateException("Iterable is empty");
+            }
+            if (this.size > 1)
+            {
+                throw new IllegalStateException("Iterable has multiple values.");
+            }
+
+            return this.original.get(this.offset);
+        }
+
+        @Override
         public MutableStack<T> toStack()
         {
             return ArrayStack.newStack(this);

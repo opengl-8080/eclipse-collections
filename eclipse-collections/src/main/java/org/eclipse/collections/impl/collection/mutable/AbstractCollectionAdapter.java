@@ -109,6 +109,25 @@ public abstract class AbstractCollectionAdapter<T>
     }
 
     @Override
+    public T getOnly()
+    {
+        Iterator<T> iterator = this.getDelegate().iterator();
+
+        if (!iterator.hasNext())
+        {
+            throw new IllegalStateException("Iterable is empty.");
+        }
+
+        T result = iterator.next();
+        if (iterator.hasNext())
+        {
+            throw new IllegalStateException("Iterable has multiple values.");
+        }
+
+        return result;
+    }
+
+    @Override
     public MutableCollection<T> tap(Procedure<? super T> procedure)
     {
         this.forEach(procedure);

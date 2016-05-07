@@ -106,6 +106,12 @@ public abstract class AbstractMutableBagIterable<T>
     }
 
     @Override
+    public T getOnly()
+    {
+        return this.getKeysView().getOnly();
+    }
+
+    @Override
     public <V> MutableMap<V, T> groupByUniqueKey(Function<? super T, ? extends V> function)
     {
         return this.groupByUniqueKey(function, UnifiedMap.newMap());

@@ -287,6 +287,12 @@ final class ImmutableTripletonMap<K, V>
         }
     }
 
+    @Override
+    public V getOnly()
+    {
+        throw new IllegalStateException("Iterable has multiple values.");
+    }
+
     private Object writeReplace()
     {
         return new ImmutableMapSerializationProxy<>(this);

@@ -398,4 +398,10 @@ final class TripletonMap<K, V>
                 return Maps.fixedSize.of();
         }
     }
+
+    @Override
+    public V getOnly()
+    {
+        throw new IllegalStateException("Iterable has multiple values.");
+    }
 }
